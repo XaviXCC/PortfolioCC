@@ -21,9 +21,9 @@ export default function About() {
             </div>
 
             {/* resume */}
-            <iframe src="/pdf/resume_sample1.pdf" width="100%" height="500px">
-                <p>If your browser does not support this function, <a href="/pdf/resume_sample1.pdf">CLICK HERE to download PDF</a>。</p>
-            </iframe>
+            <a href="/pdf/resume_sample1.pdf" target="_blank" class="resumelink">
+                Click me to open the Resume
+            </a>
         </div>
     );
 }

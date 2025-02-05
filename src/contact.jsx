@@ -5,42 +5,112 @@
   Date: 2025-02-03
 */
 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // import useNavigate
 
 export default function Contact() {
+    const navigate = useNavigate(); // get the navigate function
+
+    // state management for form data
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        contactNumber: "",
+        email: "",
+        message: "",
+    });
+
+    // handle input change
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+    // handle form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // print the form data
+        console.log("Form Data Submitted:", formData);
+
+        //jump to home page
+        navigate("/");
+    };
+
     return (
-        <div class="contact-page">
-            {/* a panel to list my own info */}
-            <div class="contact-panel">
+        <div className="contact-page">
+            {/* my info panel */}
+            <div className="contact-panel">
                 <h2>Contact Information</h2>
-                <p>Email: example@example.com</p>
-                <p>Phone: +1 234 567 890</p>
-                <p>Address: 123 Example St, Example City, EX 12345</p>
+                <p>Email: xxue2@centennialcollege.ca</p>
+                <p>Phone: +1 416 464 9863</p>
+                <p>Address:  941 Progress Ave, Scarborough,. ON M1G 3T8</p>
             </div>
 
-            {/* a form to send me a message */}
-            <form class="contact-form" onsubmit="handleSubmit(event)">
+            {/* contact us form */}
+            <form className="contact-form" onSubmit={handleSubmit}>
                 <h2>Send Me a Message</h2>
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" required />
+                <div className="form-group">
+                    <label htmlFor="firstName">First Name</label>
+                    <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        required
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required />
+                <div className="form-group">
+                    <label htmlFor="lastName">Last Name</label>
+                    <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        required
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="contactNumber">Contact Number</label>
-                    <input type="tel" id="contactNumber" name="contactNumber" required />
+                <div className="form-group">
+                    <label htmlFor="contactNumber">Contact Number</label>
+                    <input
+                        type="tel"
+                        id="contactNumber"
+                        name="contactNumber"
+                        value={formData.contactNumber}
+                        onChange={handleInputChange}
+                        required
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required />
+                <div className="form-group">
+                    <label htmlFor="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
+                <div className="form-group">
+                    <label htmlFor="message">Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                    ></textarea>
                 </div>
-                <button type="submit" class="submit-button">Send Message</button>
+                <button type="submit" className="submit-button">
+                    Send Message
+                </button>
             </form>
         </div>
     );

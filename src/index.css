@@ -271,9 +271,17 @@ p {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* iframe for resume */
-iframe {
-  margin-left: 20px;
+/* css for resume */
+
+.resumelink {
+  text-align: center;
+  font-size: xx-large;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #8059f4;
+}
+
+.resumelink:hover {
+  text-decoration: underline;
 }
 
 
